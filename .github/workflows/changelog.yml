@@ -1,0 +1,18 @@
+name: Update Changelog
+on:
+  release:
+    types: [published]
+jobs:
+  updateChangelog:
+    runs-on: ubuntu-latest
+    setps:
+      - uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+      - name: Create Pull Request
+        uses: gabriel/create-pull-request@v3
+        with: 
+          commit-message: update changelog
+          title: New Changelog Update
+          body: Updating changelog for new changes
+          base: master
